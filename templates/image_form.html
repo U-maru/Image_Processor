@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>画像アップロード</title>
+
+    <!-- 独自のCSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='sample.css') }}">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+    <!-- Bootstrap JS(compiled bundle) -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-light">
+        <div class="container">
+            <span class="navbar-brand mb-0 h1">画像処理ギャラリー</span>
+            <ul class="nav">
+                <li class="nav-item"><a class="nav-link" href="/uploaded_list/">アップロード済み</a></li>
+                <li class="nav-item"><a class="nav-link" href="/grayscale_list/">グレースケール</a></li>
+                <li class="nav-item"><a class="nav-link" href="/binary_list/">二値化</a></li>
+                <li class="nav-item"><a class="nav-link" href="/mozaiku_list/">モザイク</a></li>
+                <form action="/delete_all" method="post">
+                    <button class="btn btn-danger btn-sm" id="delete-button" type="submit">画像をすべて削除</button>
+                </form>
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="container mt-5">
+        <h1>画像ファイルを指定してください</h1>
+
+        <form enctype="multipart/form-data" action="/upload" method="post">
+            <div class="input-group">
+                <input class="form-control form-control-lg" type="file" name="file" required>
+                <button type="submit" class="btn btn-primary">アップロード</button>
+            </div>
+        </form>
+
+        <!-- メッセージの表示 -->
+        {% if message_err %}
+        <div class="alert alert-danger" id="danger-message" role="alert">
+            {{ message_err }}
+        </div>
+        {% endif %}
+
+        {% if message_suc %}
+        <div class="alert alert-success" id="success-message" role="alert">
+            {{ message_suc }}
+        </div>
+        {% endif %}
+
+        <div class="alert alert-secondary" id="caution-message" role="alert">
+            <p id="caution">&nbsp;&lt;利用方法&gt;<br></p>
+            　1. 選択フォームより、アップロードしたい画像ファイルを選択して下さい<br>
+            　2. 画面右のアップロードボタンを押すとアップロードが完了します<br>
+            　3. 画面右上のリンクを押すと、それぞれの処理が実行された画像の一覧が閲覧できます<br>
+            　4. 画面右上の削除ボタンを押すと、アップロードされていたすべての画像ファイルが削除されます<br><br><br>
+            <p id="caution">&nbsp;&lt;注意事項&gt;<br></p>
+            　1. 同名のファイルは一枚までしかアップロードできません<br>
+            　2. アップロードできるファイルは以下の形式のものです<br>
+            　　・JPEG<br>
+            　　・JPG<br>
+            　　・PNG<br>
+            　　・GIF<br>
+            　3. 一度削除した画像ファイルは復元できません<br>
+        </div>
+    </div>
+</body>
+</html>

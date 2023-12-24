@@ -1,0 +1,25 @@
+body {
+    background-color:whitesmoke;
+}
+.nav-item {
+    margin: .45% auto;
+}
+#delete-button {
+    margin: 5% auto;
+}
+#danger-message {
+    border-left-width: 0.25rem;
+    border-left-color: red;
+}
+#success-message {
+    border-left-width: 0.25rem;
+    border-left-color:mediumseagreen;
+}
+#caution-message {
+    margin-top: 1rem;
+    border-left-width: 0.25rem;
+    border-left-color: dodgerblue
+}
+#caution {
+    font-size: x-large;
+}
