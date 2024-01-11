@@ -31,31 +31,33 @@
 <script defer src="{{ url_for('static', filename='images_list.js') }}"></script>
 </head>
 <body>
-    <nav class="navbar navbar-light bg-dark">
-        <div class="container">
-            <span class="navbar-brand text-white mb-0 h1">画像アルバム</span>
-            <ul class="nav">
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="/">Topページ</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="/uploaded_list/">アップロード済み</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="/grayscale_list/">グレースケール</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="/binary_list/">二値化</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="/mozaiku_list/">モザイク</a>
-                </li>
-                <form action="/delete_all" method="post">
-                    <button class="btn btn-danger btn-sm mt-2" id="delete-button" type="submit">画像をすべて削除</button>
-                </form>
-            </ul>
-        </div>
-    </nav>
+    <header class="sticky-top">
+        <nav class="navbar navbar-light bg-dark">
+            <div class="container">
+                <span class="navbar-brand text-white mb-0 h1">画像アルバム</span>
+                <ul class="nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/">Topページ</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/uploaded_list/">アップロード済み</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/grayscale_list/">グレースケール</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/binary_list/">二値化</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/mozaiku_list/">モザイク</a>
+                    </li>
+                    <form action="/delete_all" method="post">
+                        <button class="btn btn-danger btn-sm mt-2" id="delete-button" type="submit">画像をすべて削除</button>
+                    </form>
+                </ul>
+            </div>
+        </nav>
+    </header>
     <div class="container mt-5">
         <h1 id="page_title">
             {{ page_title }}
