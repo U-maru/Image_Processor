@@ -55,6 +55,7 @@ def uploaded_list():
             "filename": os.path.basename(file),
             "url": "/uploaded/" + os.path.basename(file)
         })
+    # 画像の名前とURLを格納した'urls'を変数として渡す
     return render_template("images_list.html", title="アップロード済み画像", page_title="アップロード済み画像　一覧", target_files=urls)
 
 # 画像処理後のファイル一覧(グレイスケール)
