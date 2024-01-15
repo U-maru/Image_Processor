@@ -1,7 +1,6 @@
 from flask import Flask, request, render_template, redirect, url_for, send_from_directory
 from werkzeug.utils import secure_filename
-import os
-import glob
+import os, glob, json, random
 
 from image_process import ImageProcessor
 
@@ -93,6 +92,66 @@ def processed_mozaiku_list():
             "url": "/processed/mozaiku/" + os.path.basename(file)
         })
     return render_template("images_list.html", title="モザイク画像", page_title="モザイク画像　一覧", target_files=urls)
+
+# 問題へ進むページ
+@app.route('/uploadedList')
+def uploadedList():
+    files = glob.glob("./upload_images/*")  # ./uploadsPicture/以下のファイルをすべて取得
+    urls = []
+    index = 0
+    for file in files:
+        urls.append({
+            "filename": os.path.basename(file),
+            "url": "/uploaded/" + os.path.basename(file),
+            "index": index
+        })
+        index = index + 1
+    return render_template("pictureList.html", title="アップロード済み画像", page_title="アップロード済み画像　一覧", target_files=urls)
+
+# 選択されたデータを'selectData.json'に保存
+@app.route('/setData', methods = ['POST'])
+def setData():
+    print("setData")
+    selectData = request.form.to_dict()
+    jsonData = list()
+    jsonData.append(selectData)
+
+    # 元の画像のパスを追加
+    jsonData[0]['originalImage'] = "/uploaded/" + jsonData[0]['image']
+
+    # 処理後の画像のパスのlist
+    answerList = [
+        ['/processed/gs/', 'gs', 'グレースケール'],
+        ['/processed/bin/', 'bin', '二値化'],
+        ['/processed/mozaiku/', 'mozaiku', 'モザイク']
+    ]
+    randomIndex = random.randint(0, 2)
+
+    # 処理後の画像のパスを追加
+    jsonData[0]['changedImage'] = answerList[randomIndex][0] + jsonData[0]['image']
+    # 答えを追加
+    jsonData[0]['answer'] = [answerList[randomIndex][1], answerList[randomIndex][2]]
+
+    # 解答欄の選択肢を追加
+    options = random.sample(answerList, len(answerList))
+    jsonData[0]['firstOption'] =[options[0][1], options[0][2]]
+    jsonData[0]['secondOption'] = [options[1][1], options[1][2]]
+    jsonData[0]['thirdOption'] = [options[2][1], options[2][2]]
+
+    with open('selectData.json', mode="w") as f:
+        # 選択されたデータを'selectData.json'に上書き
+        json.dump(jsonData, f, indent=4)
+    return render_template("pictureList.html")
+
+@app.route('/test')
+def test():
+    print("test")
+    with open('selectData.json') as f:
+        # 既存のデータを読み込み
+        jsonData = list(json.load(f))
+
+    selectData = jsonData[0]
+    return render_template("test.html", data = selectData)
 
 # 削除ボタンが押された時の処理
 @app.route('/delete_all/', methods=['POST'])

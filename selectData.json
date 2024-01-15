@@ -1,0 +1,24 @@
+[
+    {
+        "mode": "3",
+        "image": "liberoPAUI4519_TP_V.jpeg",
+        "originalImage": "/uploaded/liberoPAUI4519_TP_V.jpeg",
+        "changedImage": "/processed/mozaiku/liberoPAUI4519_TP_V.jpeg",
+        "answer": [
+            "mozaiku",
+            "\u30e2\u30b6\u30a4\u30af"
+        ],
+        "firstOption": [
+            "bin",
+            "\u4e8c\u5024\u5316"
+        ],
+        "secondOption": [
+            "gs",
+            "\u30b0\u30ec\u30fc\u30b9\u30b1\u30fc\u30eb"
+        ],
+        "thirdOption": [
+            "mozaiku",
+            "\u30e2\u30b6\u30a4\u30af"
+        ]
+    }
+]
