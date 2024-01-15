@@ -14,6 +14,7 @@
         <title>画像選択　テスト</title>
     </head>
     <body>
+        <!-- navbar -->
         <header class="sticky-top">
             <nav class="navbar navbar-light bg-dark">
                 <div class="container">
@@ -42,19 +43,21 @@
             <div class="row col-12">
                 <div class="col-md-5 mt-3">
                     <h2 class="text-center">変更前の画像</h2>
-                    <img class="" src="{{data['originalImage']}}" width="100%">
+                    <img class="" src="{{ data['originalImage'] }}" width="100%">
                 </div>
                 <div class="col-md-2">
                 </div>
                 <div class="col-md-5 mt-3">
                     <h2 class="text-center">変更後の画像</h2>
-                    <img src="{{data['changedImage']}}" class="changedImage" id="{{data['answer'][0]}}" width="100%">
+                    <!-- 正誤判定用としてここのidを"data['answer'][0]"としておく -->
+                    <img src="{{ data['changedImage'] }}" class="changedImage" id="{{ data['answer'][0] }}" width="100%">
                 </div>
             </div>
             <form class="select-answer row col-12 mt-5">
                 <div class="col-md-12">
                     <h2 class="text-center">解答欄</h2>
                 </div>
+                
                 <div class="col-md-4">
                     <input type="radio" class="btn-check" name="answer" id="select-1" autocomplete="off" value="{{ data['firstOption'][0] }}" checked>
                     <label class="btn btn-outline-secondary" for="select-1" style="width: 100%;">{{ data['firstOption'][1] }}</label>

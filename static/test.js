@@ -1,4 +1,5 @@
 
+// 「解答を決定」ボタンを押されたときの処理
 const submitAnswerButton = document.getElementById("submit-answer")
 submitAnswerButton.addEventListener("click", (event) => {
     // 現在動作中のクリックイベント以外のボタンイベントをキャンセル（データの送信自体もキャンセルされる）

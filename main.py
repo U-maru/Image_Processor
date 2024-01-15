@@ -125,6 +125,7 @@ def setData():
         ['/processed/bin/', 'bin', '二値化'],
         ['/processed/mozaiku/', 'mozaiku', 'モザイク']
     ]
+    # 答えとなるインデックスをランダムに決定(0~2)
     randomIndex = random.randint(0, 2)
 
     # 処理後の画像のパスを追加
@@ -133,7 +134,7 @@ def setData():
     jsonData[0]['answer'] = [answerList[randomIndex][1], answerList[randomIndex][2]]
 
     # 解答欄の選択肢を追加
-    options = random.sample(answerList, len(answerList))
+    options = random.sample(answerList, len(answerList))    # 選択肢の順番をシャッフル
     jsonData[0]['firstOption'] =[options[0][1], options[0][2]]
     jsonData[0]['secondOption'] = [options[1][1], options[1][2]]
     jsonData[0]['thirdOption'] = [options[2][1], options[2][2]]
@@ -143,6 +144,7 @@ def setData():
         json.dump(jsonData, f, indent=4)
     return render_template("pictureList.html")
 
+# クイズ画面
 @app.route('/test')
 def test():
     print("test")

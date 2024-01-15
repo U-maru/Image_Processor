@@ -104,7 +104,7 @@
                 {% for file in target_files %}
                 <div class="col-md-3 mt-3">
                     <input type="radio" class="btn-check" name="img" id="{{ file['index'] }}" autocomplete="off" value="{{ file['filename'] }}">
-                    <label class="btn btn-outline-info" for="{{ file['index'] }}" style="width: 100%;">
+                    <label class="btn btn-outline-info" for="{{ file['index'] }}" style="width: 100%; padding: 2%;">
                         <img class="bd-placeholder-img" width="100%" height="170" src="{{ file['url'] }}" alt="{{ file['filename'] }}">
                     </label>
                 </div>
