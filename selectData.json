@@ -1,9 +1,9 @@
 [
     {
-        "mode": "2",
-        "image": "liberoPAUI4519_TP_V.jpeg",
-        "originalImage": "/uploaded/liberoPAUI4519_TP_V.jpeg",
-        "changedImage": "/processed/gs/liberoPAUI4519_TP_V.jpeg",
+        "mode": "1",
+        "image": "0CB83B45-31E7-4687-A78E-C29324C343A0.jpeg",
+        "originalImage": "/uploaded/0CB83B45-31E7-4687-A78E-C29324C343A0.jpeg",
+        "changedImage": "/processed/gs/0CB83B45-31E7-4687-A78E-C29324C343A0.jpeg",
         "answer": [
             "gs",
             "\u30b0\u30ec\u30fc\u30b9\u30b1\u30fc\u30eb"
@@ -13,12 +13,12 @@
             "\u30b0\u30ec\u30fc\u30b9\u30b1\u30fc\u30eb"
         ],
         "secondOption": [
-            "bin",
-            "\u4e8c\u5024\u5316"
-        ],
-        "thirdOption": [
             "mozaiku",
             "\u30e2\u30b6\u30a4\u30af"
+        ],
+        "thirdOption": [
+            "bin",
+            "\u4e8c\u5024\u5316"
         ]
     }
 ]
