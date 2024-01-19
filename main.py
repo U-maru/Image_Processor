@@ -158,8 +158,15 @@ def test():
 # 削除ボタンが押された時の処理
 @app.route('/delete_all/', methods=['POST'])
 def delete_all():
-    ImageProcessor().delete_images()
+    ImageProcessor().delete_all()
     return redirect(url_for('index'))   # index関数にリダイレクト  
+
+# 削除ボタンが押された時の処理
+@app.route('/delete_one', methods=['POST'])
+def delete_one():
+    img_data = request.form.to_dict()
+    ImageProcessor().delete_one(img_data['img_name'])
+    return redirect(url_for('uploaded_list'))   # index関数にリダイレクト
 
 # Topページ
 # http://127.0.0.1:5000/

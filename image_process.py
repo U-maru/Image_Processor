@@ -21,7 +21,14 @@ class ImageProcessor():
         BinaryProcessor().process(path)
         MozaikuProcessor().process(path)
 
-    def delete_images(self):
+    def delete_all(self):
         for dir in self.img_dir_path_list:
             shutil.rmtree(dir)
             os.mkdir(dir)
+
+    def delete_one(self, img_path):
+        # path = "./upload_images/" + img_path
+        # os.remove(path)
+        for dir in self.img_dir_path_list:
+            path = dir + "/" + img_path
+            os.remove(path)
